@@ -1,0 +1,127 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>Adobe Document Services and ColdFusion</title>
+
+		<link rel="stylesheet" href="dist/reset.css">
+		<link rel="stylesheet" href="dist/reveal.css">
+		<link rel="stylesheet" href="dist/theme/moon.css" id="theme">
+
+		<!-- Theme used for syntax highlighted code -->
+		<link rel="stylesheet" href="plugin/highlight/monokai.css" id="highlight-theme">
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+				<section>
+					<h1>Adobe Document Services + ColdFusion</h1>
+				</section>
+
+				<section>
+					<h2>read.me</h2>
+					<ul>
+						<li>Raymond Camden</li>
+						<li>Senior Developer Evangelist for Adobe</li>
+						<li>Enterprise Cat Demo Builder</li>
+						<li>Former ColdFusion Jedi</li>
+						<li>Blogging at raymondcamden.com</li>
+						<li>Tweeting @raymondcamden</li>
+					</ul>
+				</section>
+
+				<section>
+				<h2>Agenda</h2>
+				<ul>
+				<li class="fragment">What the heck are "Document Services"</li>
+				<li class="fragment">Demonstrate using them in ColdFusion</li>
+				<li class="fragment">Reminder - "Former" CF Jedi</li>
+				</ul>
+				<aside class="notes">
+				Quick agenda - I'll be going over Document Services, I absolutely recognize
+				that's a bit vague. I'll talk about how to use them in ColdFusion, 
+				and I'll remind folks while I used to be pretty good at CF I'm a bit rusty, 
+				so if you see me do something "the old way", blame me, not CF or the Doc Services SDKs.
+				</aside>
+				</section>
+
+				<section>
+				<h2>Adobe Document Services - TLDR</h2>
+				<p class="fragment">
+				Doing cool crap with documents (PDFs, Office Docs, etc) using a Java/.Net/Node SDKs or
+				REST APIs. 
+				</p>
+				</section>
+
+				<section>
+				<h2>Adobe Document Services</h2>
+				<ul>
+				<li class="fragment">Four Main services</li>
+				<li class="fragment">Viewing and modifying PDF documents</li>
+				<li class="fragment">Data-driven generation and extraction</li>
+				<li class="fragment">Duplicates some ColdFusion features</li>
+				</ul>
+				<aside class="notes">
+				consists of four main services, 
+				broadly fall down to viewing pdfs and manipulation of pdfs
+				we've also got powerful generation features which let you mix templating and extraction stuff 
+				yes, some of what im showing duplicates CF stuff - i'll try to avoid that but note there is 
+				some duplication here. 
+				</aside>
+				</section>
+
+				<section>
+				<h2>What's in the box....</h2>
+				<ul>
+				<li class="fragment">PDF Embed API</li>
+				<li class="fragment">PDF Services API</li>
+				<li class="fragment">Document Generation API</li>
+				<li class="fragment">PDF Extract API</li>
+				</ul>
+				</section>
+
+				<section>
+				<h2>PDF Embed API</h2>
+				<ul>
+				<li class="fragment">JavaScript library to render PDFs</li>
+				<li class="fragment">Why?</li>
+				<li class="fragment">Incredible control over the experience</li>
+				<li class="fragment">Deeper insight</li>
+				</ul>
+				<aside class="notes">
+				why? browsers do a good job rendering pdfs
+				but - they render full page
+				pdf embed api lets you treat PDFs as part of your site
+				control: turn on and off features, notice events for analytics, etc
+				</aside>
+				</section>
+
+				<section data-background="img/cat_qa.png" data-background-opacity="0.2">
+				<h2>Q and A</h2>
+				<p>Be gentle please...</p>
+				</section>
+
+
+			</div>
+		</div>
+
+		<script src="dist/reveal.js"></script>
+		<script src="plugin/notes/notes.js"></script>
+		<script src="plugin/markdown/markdown.js"></script>
+		<script src="plugin/highlight/highlight.js"></script>
+		<script>
+			// More info about initialization & config:
+			// - https://revealjs.com/initialization/
+			// - https://revealjs.com/config/
+			Reveal.initialize({
+				hash: true,
+
+				// Learn about plugins: https://revealjs.com/plugins/
+				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes ],
+				slideNumber:"c/t"
+			});
+		</script>
+	</body>
+</html>
