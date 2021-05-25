@@ -1,0 +1,52 @@
+<html>
+<head>
+	<title>A PDF Embed Test</title>
+	<style>
+	body {
+		background-color: blanchedalmond;
+		font-family: Arial, Helvetica, sans-serif;
+	}
+
+	#pdfView {
+		width: 75%;
+		height: 600px;
+	}
+	</style>
+</head>
+
+<body>
+
+<h1>A Regular HTML Page</h1>
+
+<p>
+Your awesome content of some sort. Look at the cool PDF below.
+</p>
+
+<div id="pdfView"></div>
+
+<p>
+More of your awesome content.
+</p>
+
+
+<script src="https://documentcloud.adobe.com/view-sdk/main.js"></script>
+<script>
+const ADOBE_KEY = '9861538238544ff39d37c6841344b78d';
+
+if (window.AdobeDC) displayPDF();
+else {
+  document.addEventListener("adobe_dc_view_sdk.ready", () => displayPDF());
+}
+
+function displayPDF() {
+
+	let adobeDCView = new AdobeDC.View({clientId: ADOBE_KEY, divId: 'pdfView' });
+	adobeDCView.previewFile({
+	content:{location: {url: 'cat.pdf'}},
+	metaData:{fileName: 'cat.pdf'}
+	});
+
+}
+</script>
+</body>
+</html>

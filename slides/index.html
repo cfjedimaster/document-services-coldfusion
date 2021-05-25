@@ -73,7 +73,7 @@
 				</section>
 
 				<section>
-				<h2>What's in the box....</h2>
+				<h2>The Services</h2>
 				<ul>
 				<li class="fragment">PDF Embed API</li>
 				<li class="fragment">PDF Services API</li>
@@ -95,6 +95,195 @@
 				but - they render full page
 				pdf embed api lets you treat PDFs as part of your site
 				control: turn on and off features, notice events for analytics, etc
+				</aside>
+				</section>
+
+				<section>
+				<img src="img/edge_pdf.png">
+				<aside class="notes">
+				This is an example of a PDF rendered in Edge. It works. It's beautiful. 
+				But it also takes over the entire browser page. There's no context of your site, navigation, etc.
+				</aside>
+				</section>
+
+				<section>
+				<img src="img/pdfembed1.png">
+				<aside class="notes">
+				Now compare that to this experience. I've got my site layout, I've got control 
+				over the size, and that's just the tip of the iceberg. 
+				</aside>
+				</section>
+
+				<section>
+				<h2>PDF Embed - Getting Started</h2>
+				<ul>
+				<li class="fragment">Ensure you have an Adobe ID</li>
+				<li class="fragment">Get your key</li>
+				<li class="fragment"><a href="https://www.adobe.io/apis/documentcloud/dcsdk/gettingstarted.html" target="_new">adobe.io/apis/ documentcloud/dcsdk/gettingstarted.html</a></li>
+				</ul>
+				</section>
+
+				<section>
+					<img src="img/signup.png">
+				</section>
+
+				<section>
+					<img src="img/signup2.png">
+				</section>
+
+				<section>
+				<h2>PDF Embed - Code</h2>
+				<ul>
+				<li class="fragment">Create a div for the PDF to live in</li>
+				<li class="fragment">Add our script library</li>
+				<li class="fragment">Write code to initialize library</li>
+				<li class="fragment">Write code to tell it to load the PDF</li>
+				<li class="fragment">The PDF is either a URL to a PDF or a File promise</li>
+				</ul>
+				<aside class="notes">
+				file promise is a fancy way of saying JS access to the PDF data, so maybe via a fetch 
+				call to load the data or via user interaction like with an input field (I'll show this, don't worry)
+				</aside>
+				</section>
+
+				<section>
+
+				<pre><code class="html" data-trim>
+<!-- some html -->
+<div id="myPDF"></div>
+<!-- more html -->
+				</code></pre>
+
+				<pre class="fragment"><code class="html" data-trim>
+&lt;script src="https://documentcloud.adobe.com/view-sdk/main.js"&gt;
+&lt;/script&gt;
+				</code></pre>
+
+				<pre class="fragment"><code class="javascript">
+if (window.AdobeDC) displayPDF();
+else {
+  document.addEventListener("adobe_dc_view_sdk.ready", 
+  	() => displayPDF());
+}
+
+function displayPDF() {
+	// this is where we'll show the PDF
+}
+				</code></pre>
+				</section>
+
+				<section>
+				<pre><code class="javascript">
+function displayPDF() {
+	let adobeDCView = new AdobeDC.View({
+		clientId: ADOBE_KEY, divId: "myPDF" 
+	});
+
+	adobeDCView.previewFile({
+		content:{location: {url: "cat.pdf"}},
+		metaData:{fileName: "cat.pdf"}
+	});
+}
+				</code></pre>
+				</section>
+
+				<section>
+				<h2>Demo</h2>
+				<aside class="notes">
+				demo is demos/embed/test1.html
+				show text selection, show save, 
+				mark shit open and show how i can save it
+				</aside>
+				</section>
+
+				<section>
+				<h2>Embed Options</h2>
+				<ul>
+				<li class="fragment">View options</li>
+				<li class="fragment">UI control options</li>
+				<li class="fragment">Event handling</li>
+				</ul>
+				</section>
+
+				<section>
+				<h2>Embed Options - View Options</h2>
+				<ul>
+				<li class="fragment">Sized container</li>
+				<li class="fragment">Full window</li>
+				<li class="fragment">In-Line</li>
+				<li class="fragment">Lightbox</li>
+				</ul>
+				<aside class="notes">
+				Sized container, default, one page
+				Full Window, still a sized container, but lets you scroll down a stream of pages
+				In-Line, one vertical skyscraper of content
+				lightbox 
+
+				</aside>
+				</section>
+
+				<section>
+				<pre><code class="javascript">
+function displayPDF() {
+	let adobeDCView = new AdobeDC.View({
+		clientId: ADOBE_KEY, divId: "myPDF" 
+	});
+
+	adobeDCView.previewFile({
+		content:{location: {url: "cat.pdf"}},
+		metaData:{fileName: "cat.pdf"}
+	},
+	{
+		embedMode:"IN_LINE"
+	});
+}
+				</code></pre>
+				</section>
+
+				<section>
+				<h2>Demo</h2>
+				<aside class="notes">
+				demo is demos/embed/test2.html
+				test3 is lightbnox
+				</aside>
+				</section>
+
+				<section>
+				<h2>Embed Options -UI Options</h2>
+				<ul>
+				<li class="fragment">Disable menu items</li>
+				<li class="fragment">Disable UI (like panels)</li>
+				<li class="fragment">And more...</li>
+				</ul>
+				<aside class="notes">
+				</aside>
+				</section>
+
+				<section>
+				<pre><code class="javascript">
+function displayPDF() {
+	let adobeDCView = new AdobeDC.View({
+		clientId: ADOBE_KEY, divId: "myPDF" 
+	});
+
+	adobeDCView.previewFile({
+		content:{location: {url: "cat.pdf"}},
+		metaData:{fileName: "cat.pdf"}
+	},
+	{
+		showDownloadPDF: false,
+		showPrintPDF: false,
+		showAnnotationTools: false,
+		showLeftHandPanel: false
+	});
+}
+				</code></pre>
+				</section>
+
+				<section>
+				<h2>Demo</h2>
+				<aside class="notes">
+				test4.html
 				</aside>
 				</section>
 
