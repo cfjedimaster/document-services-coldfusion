@@ -366,6 +366,80 @@ function displayPDF() {
 				</ul>
 				</section>
 
+				<section>
+				<h2>PDF Services + ColdFusion</h2>
+				<ul>
+				<li class="fragment">Java SDK</li>
+				<li class="fragment">Some issues with Jar</li>
+				<li class="fragment">SUPER Awesome GitHub project by <a href="https://twitter.com/tonyjunkes?s=20" target="_new">Tony Junkes</a></li>
+				<li class="fragment"><a href="https://github.com/tonyjunkes/pdftools-java-sdk-cfml-samples" target="_new">github.com/tonyjunkes/pdftools-java-sdk-cfml-samples</a></li>
+				</ul>
+				</section>
+
+				<section>
+				<h2>PDF Services + ColdFusion</h2>
+				<ul>
+				<li class="fragment">Grab Tony's Jar</li>
+				<li class="fragment">Dropped it in my folder (using Application.cfc Jar path option)</li>
+				<li class="fragment">Copied credentials JSON and key (*)</li>
+				<li class="fragment">Write some code...</li>
+				</ul>
+				<aside class="notes">
+				you do not have to use files, you can use environment variables for both the values in the 
+				JSON file and the key
+				</aside>
+				</section>
+
+				<section>
+				<h2>General Pseudo-Code Flow</h2>
+				<pre><code>
+make a credentials object
+create an execution context specific to your operation 
+	(merge pdf, ocr pdf, etc)
+set your input
+execute
+save result
+				</code></pre>
+				</section>
+
+				<section>
+				<pre class="r-stretch"><code class="java" data-trim>
+public class OcrPDF {
+
+ // Initialize the logger.
+ private static final Logger LOGGER = LoggerFactory.getLogger(OcrPDF.class);
+
+ public static void main(String[] args) {
+
+  try {
+
+   // Initial setup, create credentials instance.
+   Credentials credentials = Credentials.serviceAccountCredentialsBuilder()
+     .fromFile("pdftools-api-credentials.json")
+     .build();
+
+   //Create an ExecutionContext using credentials and create a new operation instance.
+   ExecutionContext executionContext = ExecutionContext.create(credentials);
+   OCROperation ocrOperation = OCROperation.createNew();
+
+   // Set operation input from a source file.
+   FileRef source = FileRef.createFromLocalFile("src/main/resources/ocrInput.pdf");
+   ocrOperation.setInput(source);
+
+   // Execute the operation
+   FileRef result = ocrOperation.execute(executionContext);
+
+   // Save the result at the specified location
+   result.saveAs("output/ocrOutput.pdf");
+
+  } catch (ServiceApiException | IOException | SdkException | ServiceUsageException ex) {
+   LOGGER.error("Exception encountered while executing operation", ex);
+  }
+ }
+}
+				</code></pre>
+				</section>
+
 				</section>
 				<section data-background="img/cat_qa.png" data-background-opacity="0.2">
 				<h2>Q and A</h2>
