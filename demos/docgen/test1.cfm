@@ -3,10 +3,9 @@
 
 <cfscript>
 // our Word doc
-input = expandPath('./catTemplate_done.docx');
+input = expandPath('./catTemplate.docx');
 
 // our data (could be API, cfquery, etc)
-//data = deserializeJSON(fileRead(expandPath('./catowner.json')));
 data = fileRead(expandPath('./catowner.json'));
 jsonData = createObject('java', 'org.json.JSONObject').init(data);
 

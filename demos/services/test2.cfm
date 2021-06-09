@@ -1,4 +1,6 @@
-
+<!---
+Same as test1, but createObject way...
+--->
 <cfscript>
 //remove existing output if it's there
 output = expandPath('./helloworld2.pdf');

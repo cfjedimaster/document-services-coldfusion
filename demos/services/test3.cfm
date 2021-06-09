@@ -1,4 +1,6 @@
-
+<!---
+Shows OCR example.
+--->
 <cfscript>
 // input is a PDF that needs to be OCRed
 input = expandPath('./pdf_that_needs_ocr.pdf');
