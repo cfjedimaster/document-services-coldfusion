@@ -9,13 +9,13 @@ pdfInstance = java {
 	import org.slf4j.Logger;
 	import org.slf4j.LoggerFactory;
 
-	import com.adobe.platform.operation.ExecutionContext;
-	import com.adobe.platform.operation.auth.Credentials;
-	import com.adobe.platform.operation.exception.SdkException;
-	import com.adobe.platform.operation.exception.ServiceApiException;
-	import com.adobe.platform.operation.exception.ServiceUsageException;
-	import com.adobe.platform.operation.io.FileRef;
-	import com.adobe.platform.operation.pdfops.CreatePDFOperation;
+	import com.adobe.pdfservices.operation.ExecutionContext;
+	import com.adobe.pdfservices.operation.auth.Credentials;
+	import com.adobe.pdfservices.operation.exception.SdkException;
+	import com.adobe.pdfservices.operation.exception.ServiceApiException;
+	import com.adobe.pdfservices.operation.exception.ServiceUsageException;
+	import com.adobe.pdfservices.operation.io.FileRef;
+	import com.adobe.pdfservices.operation.pdfops.CreatePDFOperation;
 	import java.io.IOException;
 
 	public class CreatePDFFromDOCX {
