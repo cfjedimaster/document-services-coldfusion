@@ -115,6 +115,11 @@
 				</aside>
 				</section>
 
+				<section id="pdfembed1">
+					<h2>Demo</h2>
+					<div id="pdfembed_div1" class="r-stretch"></div>
+				</section>
+
 				<section>
 				<h2>PDF Embed - Getting Started</h2>
 				<ul>
@@ -244,9 +249,12 @@ function displayPDF() {
 				<section>
 				<h2>Demo</h2>
 				<aside class="notes">
+				old notes:
 				demo is demos/embed/test2.html
 				test3 is lightbnox
+				new notes: use test_viewmodes
 				</aside>
+
 				</section>
 
 				<section>
@@ -549,14 +557,22 @@ public class OcrPDF {
 			</div>
 		</div>
 
+		<script src="https://documentcloud.adobe.com/view-sdk/main.js"></script>
 		<script src="dist/reveal.js"></script>
 		<script src="plugin/notes/notes.js"></script>
 		<script src="plugin/markdown/markdown.js"></script>
 		<script src="plugin/highlight/highlight.js"></script>
 		<script>
-			// More info about initialization & config:
-			// - https://revealjs.com/initialization/
-			// - https://revealjs.com/config/
+		const ADOBE_KEY = '9861538238544ff39d37c6841344b78d';
+
+		if (!window.AdobeDC) {
+			//we delay init Reveal till PDF Embed is ready
+			document.addEventListener("adobe_dc_view_sdk.ready", () => init());
+		}
+
+		function init() {
+
+			let deck = new Reveal();
 			Reveal.initialize({
 				hash: true,
 
@@ -564,6 +580,24 @@ public class OcrPDF {
 				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes ],
 				slideNumber:"c/t"
 			});
+
+			deck.on('slidechanged', event => {
+				if(event.currentSlide.id && event.currentSlide.id === 'pdfembed1') {
+					showPDF('/img/cat.pdf', 'pdfembed_div1');
+				}
+			});
+
+		}
+
+		function showPDF(pdf, divid) {
+			let filename = pdf.split('/').pop();
+			let adobeDCView = new AdobeDC.View({clientId: ADOBE_KEY, divId: divid });
+			adobeDCView.previewFile({
+			content:{location: {url:pdf}},
+			metaData:{fileName: filename}
+			});
+		}
+
 		</script>
 	</body>
 </html>
