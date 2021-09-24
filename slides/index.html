@@ -372,6 +372,7 @@ function displayPDF() {
 				<li class="fragment">Add a password or lock permissions (like print)</li>
 				<li class="fragment">Insert, replace, shift around, rotate, and remove pages</li>
 				<li class="fragment">Split a PDF by number of pages, ranges, or file count</li>
+				<li class="fragment">Get PDF Properties</li>
 				</ul>
 				</section>
 
@@ -583,7 +584,7 @@ public class OcrPDF {
 
 			deck.on('slidechanged', event => {
 				if(event.currentSlide.id && event.currentSlide.id === 'pdfembed1') {
-					showPDF('/img/cat.pdf', 'pdfembed_div1');
+					showPDF('./img/cat.pdf', 'pdfembed_div1');
 				}
 			});
 
