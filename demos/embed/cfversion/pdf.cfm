@@ -32,7 +32,7 @@ Here is your requested document. Enjoy.
 
 
 
-<script src="https://documentcloud.adobe.com/view-sdk/main.js"></script>
+<script src="https://documentcloud.adobe.com/view-sdk/viewer.js"></script>
 <script>
 <cfoutput>
 const ADOBE_KEY = '#application.pdfkey#';

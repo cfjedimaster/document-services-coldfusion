@@ -50,7 +50,7 @@
 				<section>
 				<h2>Adobe Document Services - TLDR</h2>
 				<p class="fragment">
-				Doing cool crap with documents (PDFs, Office Docs, etc) using a Java/.Net/Node SDKs or
+				Doing cool crap with documents (PDFs, Office Docs, etc) using SDKs or
 				REST APIs. 
 				</p>
 				</section>
@@ -58,7 +58,7 @@
 				<section>
 				<h2>Adobe Document Services</h2>
 				<ul>
-				<li class="fragment">Four Main services</li>
+				<li class="fragment">Four(ish) Main services</li>
 				<li class="fragment">Viewing and modifying PDF documents</li>
 				<li class="fragment">Data-driven generation and extraction</li>
 				<li class="fragment">Duplicates some ColdFusion features</li>
@@ -79,6 +79,8 @@
 				<li class="fragment">Adobe PDF Services API</li>
 				<li class="fragment">Adobe Document Generation API</li>
 				<li class="fragment">Adobe PDF Extract API</li>
+				<li class="fragment">Adobe Acrobat Sign API</li>
+				<li class="fragment">Adobe PDF Accessibility Auto-Tag API (Beta)</li>
 				</ul>
 				</section>
 
@@ -125,7 +127,7 @@
 				<ul>
 				<li class="fragment">Ensure you have an Adobe ID</li>
 				<li class="fragment">Get your key</li>
-				<li class="fragment"><a href="https://www.adobe.io/apis/documentcloud/dcsdk/gettingstarted.html" target="_new">adobe.io/apis/ documentcloud/dcsdk/gettingstarted.html</a></li>
+				<li class="fragment"><a href="https://documentcloud.adobe.com/dc-integration-creation-app-cdn/main.html" target="_new">documentcloud.adobe.com/dc-integration-creation-app-cdn/main.html</a></li>
 				</ul>
 				</section>
 
@@ -161,7 +163,7 @@
 				</code></pre>
 
 				<pre class="fragment"><code class="html" data-trim>
-&lt;script src="https://documentcloud.adobe.com/view-sdk/main.js"&gt;
+&lt;script src="https://documentcloud.adobe.com/view-sdk/viewer.js"&gt;
 &lt;/script&gt;
 				</code></pre>
 
@@ -558,7 +560,7 @@ public class OcrPDF {
 			</div>
 		</div>
 
-		<script src="https://documentcloud.adobe.com/view-sdk/main.js"></script>
+		<script src="https://documentcloud.adobe.com/view-sdk/viewer.js"></script>
 		<script src="dist/reveal.js"></script>
 		<script src="plugin/notes/notes.js"></script>
 		<script src="plugin/markdown/markdown.js"></script>
