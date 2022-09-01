@@ -1,5 +1,6 @@
 demos/usr/
 private.key
 pdftools-api-credentials.json
+pdfservices-api-credentials.json
 slides/test
 .vscode/

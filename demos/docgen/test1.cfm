@@ -16,7 +16,7 @@ if(fileExists(output)) fileDelete(output);
 // create and setup credentials
 cred = createObject('java','com.adobe.pdfservices.operation.auth.Credentials');
 
-jsonFile = expandPath('./pdftools-api-credentials.json');
+jsonFile = expandPath('./pdfservices-api-credentials.json');
 credentials = cred.serviceAccountCredentialsBuilder().fromFile(jsonFile).build();
 
 pdfOutput = createObject('java', 'com.adobe.pdfservices.operation.pdfops.options.documentmerge.OutputFormat').PDF;

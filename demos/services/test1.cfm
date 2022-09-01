@@ -18,6 +18,8 @@ pdfInstance = java {
 	import com.adobe.pdfservices.operation.pdfops.CreatePDFOperation;
 	import java.io.IOException;
 
+	import java.io.*;
+
 	public class CreatePDFFromDOCX {
 
 		// Initialize the logger.
@@ -25,14 +27,15 @@ pdfInstance = java {
 
 		public void execute(String inputCreds, String inputDoc, String outputDoc) {
 				
-			try {
+			try { 
+				
 				Credentials credentials = Credentials.serviceAccountCredentialsBuilder()
 				.fromFile(inputCreds)
 				.build();
-
+				
 				ExecutionContext executionContext = ExecutionContext.create(credentials);
 				CreatePDFOperation createPdfOperation = CreatePDFOperation.createNew();
-
+				
 				FileRef source = FileRef.createFromLocalFile(inputDoc);
 				createPdfOperation.setInput(source);
 
@@ -40,10 +43,12 @@ pdfInstance = java {
 				FileRef result = createPdfOperation.execute(executionContext);
 
 				// Save the result to the specified location.
-				result.saveAs(outputDoc);				
+				result.saveAs(outputDoc);		
 
 			} catch(IOException | SdkException | ServiceApiException | ServiceUsageException ex) {
 				// handle error later, haha sure i will
+				System.out.println("ray here");
+				System.out.println(ex);
 			}
 
 
@@ -52,7 +57,8 @@ pdfInstance = java {
 
 }
 
-creds = expandPath('./pdftools-api-credentials.json');
+creds = expandPath('./pdfservices-api-credentials.json');
+
 input = expandPath('./helloworld.docx');
 output = expandPath('./helloworld.pdf');
 
